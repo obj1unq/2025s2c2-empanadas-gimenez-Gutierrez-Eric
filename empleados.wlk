@@ -42,7 +42,8 @@ object galvan {
 
 object baigorria {
     var empanadasVendidas = 0
-    var cobroPorEmpanadas = 15
+    const cobroPorEmpanadas = 15
+    var totalCobrado = 0
     method venderEmpanadas (cantidad){
         empanadasVendidas = empanadasVendidas + cantidad
     }
@@ -50,8 +51,11 @@ object baigorria {
         return (cobroPorEmpanadas * empanadasVendidas)
     }
     method totalCobrado(){
-        return self.sueldo()
-        empanadasVendidas = 0
+      return totalCobrado
+    }
+    method cobrarSueldo(){
+        totalCobrado = self.sueldo()
+        empanadasVendidas = 0   
     }
 }
 
@@ -62,5 +66,6 @@ object gimenez {
     }
     method pagarSueldo (empleado){
         fondosSueldos = fondosSueldos - empleado.sueldo()
+        empleado.cobrarSueldo()
     }
 }
